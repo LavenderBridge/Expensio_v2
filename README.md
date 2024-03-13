@@ -2,7 +2,7 @@
 
 This project showcases a sophisticated cross-platform expense management application developed using Flutter. The application utilizes Google Cloud Firestore as its backend database, ensuring efficient data storage and retrieval for users' expense tracking needs. Designed with a focus on user experience and functionality, the project integrates various features including detailed expense insights and graphical data representation.
 
-#Key Features:
+# Key Features:
 
  * **Expense Insights**: Users can explore detailed insights into their expenditure habits, aiding them in better understanding and managing their finances effectively.
 
