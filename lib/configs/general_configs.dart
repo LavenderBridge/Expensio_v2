@@ -8,4 +8,5 @@ class ConfigClass{
   static Color incomeGreen = const Color.fromARGB(255, 102, 187, 106);
   static Color expenseRedBg = const Color.fromARGB(255, 255, 205, 210);
   static Color expenseRed = const Color.fromARGB(255, 239, 83, 80);
+  static Color textLightGrey = Color.fromARGB(255, 113, 113, 113);
 }
