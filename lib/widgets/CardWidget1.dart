@@ -19,7 +19,7 @@ class ContentCard extends StatelessWidget {
         child: TextButton(
           onPressed: (){},
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(5.0),
             child: Row(
               children: [
                 if (type == 1)

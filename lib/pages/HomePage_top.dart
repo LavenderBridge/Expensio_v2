@@ -31,7 +31,8 @@ class HomePageTop extends StatelessWidget {
                 Row(
                   children: [
                     const CircleAvatar(
-                      backgroundColor: Colors.orange,
+                      // backgroundColor: Colors.orange,
+                      backgroundImage: AssetImage('lib/assets/images/hero-bannner.jpg'),
                     ),
                     const SizedBox(
                       width: 10,
@@ -92,11 +93,11 @@ class HomePageTop extends StatelessWidget {
             ),
             Row(
               children: [
-                ContentCard(type: 1, amount: _controller.incomeAmount.value),
+                Obx(() => ContentCard(type: 1, amount: _controller.incomeAmount.value),),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.04,
                 ),
-                ContentCard(type: 0, amount: _controller.expenseAmount.value),
+                Obx(() => ContentCard(type: 0, amount: _controller.expenseAmount.value),),
               ],
             )
           ],

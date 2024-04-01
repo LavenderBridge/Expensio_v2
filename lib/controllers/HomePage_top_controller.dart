@@ -25,5 +25,15 @@ class BalanceController extends GetxController{
 
     }
   }
+
+  // void increase(int val){
+  //   balanceAmount += val;
+  //   // incomeAmount += val;
+  // }
+
+  // void decrease(int val){
+  //   balanceAmount -= val;
+  //   // expenseAmount -= val;
+  // }
   
 }

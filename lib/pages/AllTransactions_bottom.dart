@@ -1,53 +1,13 @@
 import 'package:expensio_v2/controllers/HomePage_bottom_controller.dart';
 import 'package:expensio_v2/controllers/HomePage_top_controller.dart';
-// import 'package:expensio_v2/testdata/testdata.dart';
 import 'package:expensio_v2/widgets/CardWidget2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-// class RecentTransactions extends StatelessWidget {
-//   RecentTransactions({super.key});
-
-//   final SwipeDismissController _swipeController =
-//       Get.put(SwipeDismissController());
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(20.0),
-//       child: Column(
-//         mainAxisSize: MainAxisSize.min,
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.symmetric(vertical: 10),
-//             child: Text(
-//               "Recent Transactions",
-//               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-//             ),
-//           ),
-//           Expanded(
-//             child: ListView.builder(
-//               itemCount: _swipeController.testdata.length,
-//               // physics: ClampingScrollPhysics(),
-//               itemBuilder: ((context, index) {
-//                 return ContentCardRecentTransactions(
-//                     type: _swipeController.testdata[index][1],
-//                     amount: _swipeController.testdata[index][2],
-//                     title: _swipeController.testdata[index][0],
-//                     category: _swipeController.testdata[index][3],
-//                     date: DateTime.now().month.toString());
-//               }),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-class RecentTransactions extends StatelessWidget {
-  RecentTransactions({Key? key}) : super(key: key);
+class AllTransactionsBottom extends StatelessWidget {
+  AllTransactionsBottom({super.key});
 
   final SwipeDismissController _swipeController = Get.put(SwipeDismissController());
   final BalanceController _balanceController = Get.put(BalanceController());
@@ -63,7 +23,7 @@ class RecentTransactions extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
-              "Recent Transactions",
+              "All Transactions",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
             ),
           ),
@@ -77,7 +37,7 @@ class RecentTransactions extends StatelessWidget {
                     direction: DismissDirection.startToEnd,
                     onDismissed: (_) {
                       _swipeController.removeAtIndex(index);
-                      },
+                    },
                     child: ContentCardRecentTransactions(
                       type: _swipeController.testdata[index][1],
                       amount: _swipeController.testdata[index][2],
@@ -93,5 +53,6 @@ class RecentTransactions extends StatelessWidget {
         ],
       ),
     );
+    ;
   }
 }
