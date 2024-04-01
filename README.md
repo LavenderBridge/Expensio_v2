@@ -11,3 +11,7 @@ This project showcases a sophisticated cross-platform expense management applica
  * **Identity and Access Management**: Authentication is handled using Firebase authentication and OAuth services, ensuring secure access to user accounts and protecting their personal information.
 
  * **State Management**: GetX framework is employed for efficient state management within the application, enhancing performance and usability.
+
+# Proposed UI (![Credits: Faiz Shahnawaz](https://dribbble.com/shots/17913062-Expense-Tracker-Application))
+![UI_Home_2](https://github.com/LavenderBridge/Expensio_v2/assets/71207110/df83726d-eeeb-4646-9557-04c590b96f61)
+
