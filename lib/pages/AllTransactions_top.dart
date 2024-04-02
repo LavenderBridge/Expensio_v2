@@ -8,26 +8,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AllTransactionsTop extends StatelessWidget {
-  final BalanceController _controller = Get.put(BalanceController());
-  AllTransactionsTop({super.key});
+  const AllTransactionsTop({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(10),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.15),
-            blurRadius: 5,
-            spreadRadius: 3
-          )
-        ]
-      ),
+          color: Colors.white,
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.15),
+                blurRadius: 5,
+                spreadRadius: 3)
+          ]),
       height: MediaQuery.of(context).size.height * 0.35,
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -41,22 +38,63 @@ class AllTransactionsTop extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Transactions",
-                      style: TextStyle(
-                          color: ConfigClass.greyColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24),
+                    Row(
+                      children: [
+                        IconButton(onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back)),
+                        Text(
+                          "Transactions",
+                          style: TextStyle(
+                              color: ConfigClass.greyColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              color: ConfigClass.greyColor,
+                              borderRadius: BorderRadius.circular(4)),
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Income",
+                              style: TextStyle(
+                                color: ConfigClass.semiTransparentTextWhite,
+                                fontSize: 11
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              color: ConfigClass.buttonBackground,
+                              borderRadius: BorderRadius.circular(4)),
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Expense",
+                              style: TextStyle(
+                                  color: ConfigClass.greyColor,
+                                  fontSize: 11),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ],
             ),
             AspectRatio(
-              aspectRatio: 1.8,
+              aspectRatio: 2.2,
               child: AllTransactionsGraph(dataList: lineChartData),
             ),
-            
           ],
         ),
       ),

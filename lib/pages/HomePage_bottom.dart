@@ -49,22 +49,32 @@ import 'package:get/get_core/src/get_main.dart';
 class RecentTransactions extends StatelessWidget {
   RecentTransactions({Key? key}) : super(key: key);
 
-  final SwipeDismissController _swipeController = Get.put(SwipeDismissController());
+  final SwipeDismissController _swipeController =
+      Get.put(SwipeDismissController());
   final BalanceController _balanceController = Get.put(BalanceController());
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              "Recent Transactions",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Recent Transactions",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                ),
+                TextButton(
+                  onPressed: () => Get.toNamed("/second"),
+                  child: Text("View all"),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -77,7 +87,7 @@ class RecentTransactions extends StatelessWidget {
                     direction: DismissDirection.startToEnd,
                     onDismissed: (_) {
                       _swipeController.removeAtIndex(index);
-                      },
+                    },
                     child: ContentCardRecentTransactions(
                       type: _swipeController.testdata[index][1],
                       amount: _swipeController.testdata[index][2],

@@ -15,7 +15,7 @@ class AllTransactionsBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,19 +32,12 @@ class AllTransactionsBottom extends StatelessWidget {
               return ListView.builder(
                 itemCount: _swipeController.testdata.length,
                 itemBuilder: ((context, index) {
-                  return Dismissible(
-                    key: UniqueKey(),
-                    direction: DismissDirection.startToEnd,
-                    onDismissed: (_) {
-                      _swipeController.removeAtIndex(index);
-                    },
-                    child: ContentCardRecentTransactions(
-                      type: _swipeController.testdata[index][1],
-                      amount: _swipeController.testdata[index][2],
-                      title: _swipeController.testdata[index][0],
-                      category: _swipeController.testdata[index][3],
-                      date: DateTime.now().month.toString(),
-                    ),
+                  return ContentCardRecentTransactions(
+                    type: _swipeController.testdata[index][1],
+                    amount: _swipeController.testdata[index][2],
+                    title: _swipeController.testdata[index][0],
+                    category: _swipeController.testdata[index][3],
+                    date: DateTime.now().month.toString(),
                   );
                 }),
               );

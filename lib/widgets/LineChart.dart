@@ -41,7 +41,7 @@ class AllTransactionsGraph extends StatelessWidget {
           ),
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
-              interval: 1000,
+              interval: 100,
               showTitles: true,
               getTitlesWidget: (value, meta) {
                 return Text(
