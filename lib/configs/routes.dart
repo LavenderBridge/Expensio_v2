@@ -1,18 +1,12 @@
-import 'package:expensio_v2/pages/MyHomePage.dart';
-import 'package:flutter/material.dart';
+import 'package:expensio_v2/pages/all_transactions/AllTransactionsPage.dart';
+import 'package:expensio_v2/pages/home_page/MyHomePage.dart';
+import 'package:expensio_v2/pages/login_page/LoginPage.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
-final routes = [
-  GetPage(name: '/', page: () => MyHomePage()),
-  GetPage(name: '/second', page: () => SecondScreen()),
-  // GetPage(name: '/third', page: () => ThirdScreen()),
-];
-
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(color: Colors.amber,);
-  }
-}
+List<GetPage> GetPages = [
+        GetPage(name: '/login', page: () => LoginPage()),
+        GetPage(name: '/', page: () => const MyHomePage()),
+        GetPage(name: '/second', page: () => const AllTransactions()),
+        // GetPage(name: '/third', page: () => Third()),
+        // GetPage(name: "/fourth", page: () => Fourth()),
+      ];
