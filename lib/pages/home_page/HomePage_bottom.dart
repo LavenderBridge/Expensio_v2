@@ -44,7 +44,7 @@ class RecentTransactions extends StatelessWidget {
                 itemBuilder: ((context, index) {
                   return Dismissible(
                     key: UniqueKey(),
-                    direction: DismissDirection.startToEnd,
+                    direction: DismissDirection.horizontal,
                     onDismissed: (_) {
                       _swipeController.removeAtIndex(index);
                     },

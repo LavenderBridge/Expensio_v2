@@ -83,7 +83,8 @@ class LoginPage extends StatelessWidget {
                   color: ConfigClass.greyColor,
                   borderRadius: BorderRadius.circular(8)),
               child: TextButton(
-                onPressed: () => FirebaseFunctions().email_signin(_emailController.text, _passwordController.text),
+                // onPressed: () => FirebaseFunctions().email_signin(_emailController.text, _passwordController.text),
+                onPressed: () => Get.toNamed('/all'),
                 child: Text(
                   "Login",
                   style: TextStyle(color: ConfigClass.textWhite),
