@@ -16,3 +16,7 @@ This project showcases a sophisticated cross-platform expense management applica
 ![Credits: Faiz Shahnawaz](https://dribbble.com/shots/17913062-Expense-Tracker-Application)
 ![UI_Home_2](https://github.com/LavenderBridge/Expensio_v2/assets/71207110/df83726d-eeeb-4646-9557-04c590b96f61)
 
+# UI [Under_development]
+![mockup3](https://github.com/LavenderBridge/Expensio_v2/assets/71207110/5e404324-3271-4819-945d-4662e0b59116)
+
+
