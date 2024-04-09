@@ -1,14 +1,28 @@
 import 'package:expensio_v2/configs/general_configs.dart';
 import 'package:expensio_v2/firebase/firebase_functions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
-
-  TextEditingController _emailController = new TextEditingController();
-  TextEditingController _passwordController = new TextEditingController();
+  final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _passwordController = new TextEditingController();
 
   LoginPage({super.key});
+
+  bool validate_inputs() {
+    bool validEmail = RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(_emailController.text);
+    return (!(_emailController.text == "" && _passwordController.text == "") &&
+        validEmail);
+  }
+
+  final User? user = FirebaseFunctions().currentUser;
+
+  Future<void> signOut() async {
+    await FirebaseFunctions().signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +42,9 @@ class LoginPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               width: Get.width,
               height: 55,
@@ -83,8 +99,9 @@ class LoginPage extends StatelessWidget {
                   color: ConfigClass.greyColor,
                   borderRadius: BorderRadius.circular(8)),
               child: TextButton(
-                // onPressed: () => FirebaseFunctions().email_signin(_emailController.text, _passwordController.text),
-                onPressed: () => Get.toNamed('/all'),
+                onPressed: () => FirebaseFunctions().email_signin(
+                    _emailController.text, _passwordController.text),
+                // onPressed: () => Get.toNamed('/all'),
                 child: Text(
                   "Login",
                   style: TextStyle(color: ConfigClass.textWhite),
@@ -99,7 +116,7 @@ class LoginPage extends StatelessWidget {
                       color: ConfigClass.textLightGrey,
                     )),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed('/register'),
                   child: Text(
                     "Register Now",
                     style: TextStyle(
@@ -109,7 +126,9 @@ class LoginPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             const Row(
               children: [
                 Expanded(
@@ -133,7 +152,9 @@ class LoginPage extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Container(
               width: Get.width,
               height: 55,
