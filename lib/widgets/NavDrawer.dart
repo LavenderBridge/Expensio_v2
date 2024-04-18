@@ -55,18 +55,20 @@ class NavDrawer extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text("Are you sure you want to log out?"),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                            TextButton(
+                                onPressed: () => Get.back(), child: Text("No")),
                             TextButton(
                                 onPressed: () {
                                   FirebaseFunctions().signOut().whenComplete(
                                       () => Get.offAllNamed('/login'));
                                 },
-                                child: Text("Yes")),
-                            TextButton(
-                                onPressed: () => Get.back(), child: Text("No")),
+                                child: Text("Yes"))
                           ],
                         )
                       ],

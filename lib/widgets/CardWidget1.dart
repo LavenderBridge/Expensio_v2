@@ -10,7 +10,7 @@ class ContentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: 100,
+        height: 80,
         width: 100,
         decoration: BoxDecoration(
           color: Colors.white,

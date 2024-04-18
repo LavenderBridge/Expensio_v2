@@ -5,16 +5,24 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class NewRegistrationPage extends StatelessWidget {
-  final TextEditingController _emailController = new TextEditingController();
-  final TextEditingController _passwordController = new TextEditingController();
-  final TextEditingController _passwordConfirmController =
-      new TextEditingController();
+  final TextEditingController _emailController =  TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmController = TextEditingController();
 
   NewRegistrationPage({super.key});
 
+  void dispose(){
+    _emailController.dispose();
+    _passwordConfirmController.dispose();
+    _passwordController.dispose();
+  }
+
   bool validate_inputs() {
-    bool validEmail = RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$').hasMatch(_emailController.text);
-    return (!(_emailController.text == "" && _passwordController.text == "") && validEmail);
+    bool validEmail = RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(_emailController.text);
+    return (!(_emailController.text == "" && _passwordController.text == "") &&
+        validEmail);
   }
 
   @override
@@ -120,40 +128,8 @@ class NewRegistrationPage extends StatelessWidget {
                   if (validate_inputs() &&
                       _passwordController.text ==
                           _passwordConfirmController.text) {
-                    FirebaseFunctions()
-                        .new_user(_emailController.text,
-                            _passwordConfirmController.text)
-                        .whenComplete(
-                      () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Text("New user successfully created"),
-                              content: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                      "You can login now. Navigating to the login screen"),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      TextButton(
-                                          onPressed: () => Get.offAllNamed('/login'),
-                                          child: Text("Ok"))
-                                    ],
-                                  )
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    );
+                    FirebaseFunctions().new_user(
+                        _emailController.text, _passwordConfirmController.text);
                   } else if (!validate_inputs()) {
                     showDialog(
                       context: context,

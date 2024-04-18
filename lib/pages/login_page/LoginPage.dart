@@ -4,21 +4,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 class LoginPage extends StatelessWidget {
-  final TextEditingController _emailController = new TextEditingController();
-  final TextEditingController _passwordController = new TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   LoginPage({super.key});
 
-  bool validate_inputs() {
-    bool validEmail = RegExp(
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-        .hasMatch(_emailController.text);
-    return (!(_emailController.text == "" && _passwordController.text == "") &&
-        validEmail);
-  }
-
   final User? user = FirebaseFunctions().currentUser;
+
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
 
   Future<void> signOut() async {
     await FirebaseFunctions().signOut();
@@ -99,8 +97,10 @@ class LoginPage extends StatelessWidget {
                   color: ConfigClass.greyColor,
                   borderRadius: BorderRadius.circular(8)),
               child: TextButton(
-                onPressed: () => FirebaseFunctions().email_signin(
-                    _emailController.text, _passwordController.text),
+                onPressed: () {
+                  FirebaseFunctions().email_signin(
+                      _emailController.text, _passwordController.text);
+                },
                 // onPressed: () => Get.toNamed('/all'),
                 child: Text(
                   "Login",

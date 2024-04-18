@@ -18,7 +18,7 @@ class HomePageTop extends StatelessWidget {
           bottomRight: Radius.circular(10),
         ),
       ),
-      height: MediaQuery.of(context).size.height * 0.35,
+      height: MediaQuery.of(context).size.height * 0.3,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -72,7 +72,7 @@ class HomePageTop extends StatelessWidget {
                     "Balance",
                     style: TextStyle(
                         color: ConfigClass.semiTransparentTextWhite,
-                        fontSize: 22,
+                        fontSize: 18,
                         letterSpacing: 0),
                   ),
                 ),

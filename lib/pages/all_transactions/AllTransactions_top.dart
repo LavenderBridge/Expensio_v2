@@ -50,43 +50,6 @@ class AllTransactionsTop extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              color: ConfigClass.greyColor,
-                              borderRadius: BorderRadius.circular(4)),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Income",
-                              style: TextStyle(
-                                color: ConfigClass.semiTransparentTextWhite,
-                                fontSize: 11
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 100,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              color: ConfigClass.buttonBackground,
-                              borderRadius: BorderRadius.circular(4)),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Expense",
-                              style: TextStyle(
-                                  color: ConfigClass.greyColor,
-                                  fontSize: 11),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ],
