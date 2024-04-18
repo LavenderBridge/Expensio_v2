@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
           forwardAnimationCurve: Curves.fastEaseInToSlowEaseOut,
           reverseAnimationCurve: Curves.fastEaseInToSlowEaseOut,
         );
-          nextScreen = const MyHomePage();
+          nextScreen = MyHomePage();
         } else {
           nextScreen = LoginPage();
         }

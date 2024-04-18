@@ -6,7 +6,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage> GetPages = [
         GetPage(name: '/login', page: () => LoginPage()),
-        GetPage(name: '/', page: () => const MyHomePage()),
+        GetPage(name: '/', page: () => MyHomePage()),
         GetPage(name: '/second', page: () => const AllTransactions()),
         GetPage(name: '/register', page: () => NewRegistrationPage())
         // GetPage(name: '/third', page: () => Third()),
