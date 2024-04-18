@@ -9,6 +9,15 @@ List testData = [
   ["Fried Rice", 0, 130, "Food"],
   ["VMart", 0, 75, "Misc"],
   ["Big Basket", 0, 230, "Misc"],
+  ["Food", 0, 180, "Food"],
+  ["Chips", 0, 20, "Food"],
+  ["Allowance", 1, 4000, "Misc"],
+  ["Big Basket", 0, 230, "Misc"],
+  ["Shawarma", 0, 90, "Food"],
+  ["Fried Rice", 0, 130, "Food"],
+  ["Fried Rice", 0, 130, "Food"],
+  ["VMart", 0, 75, "Misc"],
+  ["Big Basket", 0, 230, "Misc"],
 ];
 
 class LineChartData_{

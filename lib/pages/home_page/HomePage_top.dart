@@ -12,67 +12,29 @@ class HomePageTop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ConfigClass.greyColor,
+        // color: ConfigClass.greyColor,
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(10),
           bottomRight: Radius.circular(10),
         ),
       ),
-      height: MediaQuery.of(context).size.height * 0.3,
+      // height: MediaQuery.of(context).size.height * 0.3,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      // backgroundColor: Colors.orange,
-                      backgroundImage: AssetImage('lib/assets/images/hero-bannner.jpg'),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Hello Kunal",
-                          style: TextStyle(
-                              color: ConfigClass.textWhite,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ),
-                        Text(
-                          "Welcome Back!",
-                          style: TextStyle(
-                              color: ConfigClass.semiTransparentTextWhite),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                IconButton(
-                    onPressed: () {Scaffold.of(context).openEndDrawer();},
-                    icon: Icon(
-                      Icons.menu,
-                      color: ConfigClass.textWhite,
-                    ))
-              ],
-            ),
             Column(
               children: [
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Balance",
+                    "Remaining Balance",
                     style: TextStyle(
                         color: ConfigClass.semiTransparentTextWhite,
-                        fontSize: 18,
+                        fontSize: 10,
                         letterSpacing: 0),
                   ),
                 ),
@@ -91,15 +53,6 @@ class HomePageTop extends StatelessWidget {
                 // SizedBox(height: 25,),
               ],
             ),
-            Row(
-              children: [
-                Obx(() => ContentCard(type: 1, amount: _controller.incomeAmount.value),),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.04,
-                ),
-                Obx(() => ContentCard(type: 0, amount: _controller.expenseAmount.value),),
-              ],
-            )
           ],
         ),
       ),
