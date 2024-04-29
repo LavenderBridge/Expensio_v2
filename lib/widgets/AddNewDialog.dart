@@ -1,4 +1,6 @@
 import 'package:expensio_v2/configs/general_configs.dart';
+import 'package:expensio_v2/controllers/Firestore_controller.dart';
+import 'package:expensio_v2/testdata/testdata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +9,8 @@ class AddNewDialog extends StatelessWidget {
 
   TextEditingController _titleController = TextEditingController();
   TextEditingController _amountController = TextEditingController();
+  var dropDownValue;
+  FirestoreController storageController = Get.put(FirestoreController());
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +109,9 @@ class AddNewDialog extends StatelessWidget {
                       value: "Transport",
                     ),
                   ],
-                  onChanged: (value) => {},
+                  onChanged: (value) => {
+                    dropDownValue = value
+                  },
                 )),
           ),
           Padding(
@@ -138,7 +144,14 @@ class AddNewDialog extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Map<String, dynamic> data = {
+                          "title" : _titleController.text,
+                          "amount" : _amountController.text,
+                          "category": dropDownValue
+                        };
+                        storageController.addData(data);
+                      },
                       child: Text(
                         "Add",
                         style: TextStyle(color: Colors.white),

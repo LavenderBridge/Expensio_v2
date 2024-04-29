@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 class AllTransactionsTop extends StatelessWidget {
   const AllTransactionsTop({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +39,15 @@ class AllTransactionsTop extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(onPressed: () => Get.back(), icon: const Icon(Icons.arrow_back)),
-                        Text(
-                          "Transactions",
-                          style: TextStyle(
-                              color: ConfigClass.greyColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "All Transactions",
+                        style: TextStyle(
+                            color: ConfigClass.greyColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24),
+                      ),
                     ),
                   ],
                 ),

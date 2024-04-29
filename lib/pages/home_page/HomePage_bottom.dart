@@ -23,24 +23,15 @@ class RecentTransactions extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  "Recent Transactions",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-                ),
-                TextButton(
-                  onPressed: () => Get.toNamed("/second"),
-                  child: Text("View all"),
-                ),
-              ],
+            child: const Text(
+              "Recent Transactions",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
             ),
           ),
           Expanded(
             child: Obx(() {
               return ListView.builder(
-                itemCount: _swipeController.testdata.length,
+                itemCount: _swipeController.testdata.length < 5 ? _swipeController.testdata.length : 5,
                 itemBuilder: ((context, index) {
                   return Dismissible(
                     key: UniqueKey(),

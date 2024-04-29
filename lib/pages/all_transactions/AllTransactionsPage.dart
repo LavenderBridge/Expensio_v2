@@ -10,12 +10,17 @@ class AllTransactions extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-              children: [
-                AllTransactionsTop(),
-                Expanded(child: AllTransactionsBottom()),
-              ],
-            ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            child: Column(
+                  children: [
+                    AllTransactionsTop(),
+                    AllTransactionsBottom(),
+                  ],
+                ),
+          ),
+        ),
       ),
     );
   }

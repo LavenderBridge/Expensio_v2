@@ -10,26 +10,28 @@ class AllTransactionsBottom extends StatelessWidget {
   AllTransactionsBottom({super.key});
 
   final SwipeDismissController _swipeController = Get.put(SwipeDismissController());
-  final BalanceController _balanceController = Get.put(BalanceController());
+  // final BalanceController _balanceController = Get.put(BalanceController());
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              "All Transactions",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+      child: Container(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                "All Transactions",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+              ),
             ),
-          ),
-          Expanded(
-            child: Obx(() {
+            Obx(() {
               return ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: _swipeController.testdata.length,
                 itemBuilder: ((context, index) {
                   return ContentCardRecentTransactions(
@@ -42,8 +44,8 @@ class AllTransactionsBottom extends StatelessWidget {
                 }),
               );
             }),
-          ),
-        ],
+          ],
+        ),
       ),
     );
     ;

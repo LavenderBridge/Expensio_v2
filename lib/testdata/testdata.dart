@@ -11,6 +11,13 @@ List testData = [
   ["Big Basket", 0, 230, "Misc"],
 ];
 
+final testFirebaseData = <String, dynamic> {
+  "first": "Ada",
+  "last": "Lovelace",
+  "born": 1815
+};
+
+
 class LineChartData_{
   final double x; final double y;
   LineChartData_({required this.x, required this.y});
