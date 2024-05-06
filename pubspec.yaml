@@ -46,6 +46,7 @@ dependencies:
   page_transition: ^2.1.0
   mongo_dart: ^0.10.0
   cloud_firestore: ^4.15.8
+  supabase_flutter: ^2.5.2
   # rive: 0.11.11
 
 
