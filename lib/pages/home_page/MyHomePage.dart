@@ -1,17 +1,15 @@
+import 'package:expensio_v2/Controllers/CustomBottomBarController.dart';
 import 'package:expensio_v2/configs/general_configs.dart';
 import 'package:expensio_v2/controllers/MyHomePage_controller.dart';
+import 'package:expensio_v2/global_widgets/CustomFloatingNavigationBar.dart';
 import 'package:expensio_v2/pages/add_new_page/AddNewItemPage.dart';
 import 'package:expensio_v2/pages/all_transactions/AllTransactionsPage.dart';
 import 'package:expensio_v2/pages/home_page/HomePage_bottom.dart';
 import 'package:expensio_v2/pages/home_page/HomePage_top.dart';
-import 'package:expensio_v2/widgets/AddNewDialog.dart';
-import 'package:expensio_v2/widgets/BottomNavBar.dart';
-import 'package:expensio_v2/widgets/CardWidget1.dart';
-import 'package:expensio_v2/widgets/NavDrawer.dart';
+import 'package:expensio_v2/global_widgets/AddNewDialog.dart';
+import 'package:expensio_v2/global_widgets/NavDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stylish_bottom_bar/model/bar_items.dart';
-import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -21,38 +19,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget displayScreen = landingPage();
-  CounterController _pageController = Get.put(CounterController());
+  Widget displayScreen = const landingPage();
+  // final PageIndexController _pageIndexController =
+  //     Get.put(PageIndexController());
+  final CustomBottomBarController _currentPageIndexController = Get.put(CustomBottomBarController());
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+        child: Scaffold(
       resizeToAvoidBottomInset: false,
       endDrawer: NavDrawer(),
-      body: [landingPage(), AddNewItemPage(), AllTransactions()][_pageController.currentPage.value],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _pageController.currentPage.value,
-        onDestinationSelected: (value) {
-          setState(() {
-            _pageController.currentPage.value = value;
-          });
-        },
-        destinations: [
-          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          NavigationDestination(icon: Icon(Icons.add), label: "Add"),
-          NavigationDestination(icon: Icon(Icons.list), label: "All Expenses")
-        ],
+      body: Obx(
+        () => [
+          const landingPage(),
+          AddNewItemPage(),
+          const AllTransactions()
+        ][_currentPageIndexController.currentIndex.value],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => setState(() {
-      //     _pageController.currentPage.value = 2;
-      //   }),
-      //   backgroundColor: ConfigClass.incomeGreenBg,
-      //   elevation: 5,
-      //   shape: CircleBorder(),
-      //   child: Icon(Icons.add),
-      // ),
+      bottomNavigationBar: CustomFloatingNavigationBar(),
+      floatingActionButton: FloatingActionButton(
+        // onPressed: () => setState(() {
+        //   _pageController.currentPage.value = 2;
+        // }),
+        onPressed: () =>
+            showDialog(context: context, builder: (_) => AddNewDialog()),
+        backgroundColor: ConfigClass.incomeGreenBg,
+        elevation: 5,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.add),
+      ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     ));
   }
@@ -66,7 +62,7 @@ class landingPage extends StatelessWidget {
     return Column(
       children: [
         HomePageTop(),
-        Expanded(child: RecentTransactions()),
+        Expanded(child: HomePageBottom()),
       ],
     );
   }

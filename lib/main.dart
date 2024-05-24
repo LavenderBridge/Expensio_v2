@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
   FirestoreController storageController = Get.put(FirestoreController());
 
   
+  //Shared Prefs check login
   Future<void> checkLoginStatus() async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     var status = _prefs.getBool('isLoggedIn') ?? false;
@@ -61,8 +62,8 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: ConfigClass.incomeGreen,
           // colorText: Colors.white,
           borderRadius: 0,
-          margin: EdgeInsets.all(0),
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          margin: const EdgeInsets.all(0),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           snackStyle: SnackStyle.GROUNDED,
           maxWidth: Get.width,
           forwardAnimationCurve: Curves.fastEaseInToSlowEaseOut,

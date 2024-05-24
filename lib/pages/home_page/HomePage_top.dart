@@ -1,6 +1,6 @@
 import 'package:expensio_v2/configs/general_configs.dart';
 import 'package:expensio_v2/controllers/HomePage_top_controller.dart';
-import 'package:expensio_v2/widgets/CardWidget1.dart';
+import 'package:expensio_v2/global_widgets/CardWidget1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -62,7 +62,7 @@ import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 NavigationBar bar = NavigationBar(
   selectedIndex: 0,
   onDestinationSelected: (value) {
-    CounterController _pageController = Get.put(CounterController());
+    PageIndexController _pageController = Get.put(PageIndexController());
     _pageController.currentPage.value = value;
   },
   destinations: [

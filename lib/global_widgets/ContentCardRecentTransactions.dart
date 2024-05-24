@@ -1,13 +1,14 @@
 import 'package:expensio_v2/configs/general_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ContentCardRecentTransactions extends StatelessWidget {
-  final int type; //income = 1, expense = other
+  final bool type; //income = 1, expense = other
   final int amount;
   final String title;
   final String category;
   final String date;
-  ContentCardRecentTransactions(
+  const ContentCardRecentTransactions(
       {super.key,
       required this.type,
       required this.amount,
@@ -21,32 +22,33 @@ class ContentCardRecentTransactions extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: ConstrainedBox(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           maxHeight: 70,
           minHeight: 50
         ),
         child: Container(
           height: 70,
           // width: MediaQuery.of(context).size.width,
-          width: 50,
+          // width: 50,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
             boxShadow: const [
               BoxShadow(
                   blurRadius: 1,
-                  spreadRadius: 2,
-                  color: Color.fromARGB(12, 0, 0, 0)),
+                  spreadRadius: 1,
+                  color: Color.fromARGB(22, 0, 0, 0)),
             ],
           ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
                   child: Row(children: [
-                    if (type == 1)
+                    if (type == true)
                       CircleAvatar(
                         backgroundColor: ConfigClass.incomeGreenBg,
                         child: Icon(
@@ -54,7 +56,7 @@ class ContentCardRecentTransactions extends StatelessWidget {
                           color: ConfigClass.incomeGreen,
                         ),
                       )
-                    else if (type == 0)
+                    else if (type == false)
                       CircleAvatar(
                         backgroundColor: ConfigClass.expenseRedBg,
                         child: Icon(
@@ -93,13 +95,13 @@ class ContentCardRecentTransactions extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        type == 1 ? "+₹${amount.toString()}" : "-₹${amount.toString()}",
+                        type==true ? "+₹${amount.toString()}" : "-₹${amount.toString()}",
                         style: TextStyle(
                             color: ConfigClass.greyColor,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        date.toString(),
+                        DateFormat('d MMMM').format(DateTime.parse(date.toString())),
                         style:
                             TextStyle(color: ConfigClass.textLightGrey, fontSize: 10),
                       )

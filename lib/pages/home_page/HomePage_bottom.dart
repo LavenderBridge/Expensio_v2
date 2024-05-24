@@ -1,17 +1,14 @@
 import 'package:expensio_v2/controllers/HomePage_bottom_controller.dart';
-import 'package:expensio_v2/controllers/HomePage_top_controller.dart';
-// import 'package:expensio_v2/testdata/testdata.dart';
-import 'package:expensio_v2/widgets/CardWidget2.dart';
+import 'package:expensio_v2/global_widgets/CardWidget2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class RecentTransactions extends StatelessWidget {
-  RecentTransactions({Key? key}) : super(key: key);
+class HomePageBottom extends StatelessWidget {
+  HomePageBottom({Key? key}) : super(key: key);
 
   final SwipeDismissController _swipeController =
       Get.put(SwipeDismissController());
-  final BalanceController _balanceController = Get.put(BalanceController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +18,9 @@ class RecentTransactions extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Text(
               "Recent Transactions",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
             ),
@@ -31,11 +28,23 @@ class RecentTransactions extends StatelessWidget {
           Expanded(
             child: Obx(() {
               return ListView.builder(
-                itemCount: _swipeController.testdata.length < 5 ? _swipeController.testdata.length : 5,
+                itemCount: _swipeController.testdata.length < 5
+                    ? _swipeController.testdata.length
+                    : 5,
                 itemBuilder: ((context, index) {
                   return Dismissible(
                     key: UniqueKey(),
                     direction: DismissDirection.horizontal,
+                    background: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5.0),
+                      child: Container(
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                          color: Colors.red.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
                     onDismissed: (_) {
                       _swipeController.removeAtIndex(index);
                     },
